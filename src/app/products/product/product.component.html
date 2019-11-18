@@ -1,0 +1,25 @@
+<button class="btn btn-success" (click)="click()">Hide/Show</button>
+
+
+<table class="table table-dark">
+  <thead>
+  <tr>
+    <th scope="col">#</th>
+    <th scope="col">Name</th>
+    <th scope="col">Price</th>
+    <ng-container *ngIf="showImage">
+      <th scope="col">Image</th>
+    </ng-container>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let product of products,let i =index">
+    <th scope="row">{{i + 1}}</th>
+    <td>{{product.name}}</td>
+    <td>{{product.price}}</td>
+    <ng-container *ngIf="showImage">
+      <td><img src="{{product.image}}" alt="" width="{{widthImage}}"></td>
+    </ng-container>
+  </tr>
+  </tbody>
+</table>
