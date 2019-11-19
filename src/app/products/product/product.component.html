@@ -1,5 +1,16 @@
-<button class="btn btn-success" (click)="click()">Hide/Show</button>
 
+<form class="form-inline my-2 my-lg-0">
+  <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" (keyup)="search($event)">
+</form>
+
+
+<div class="hide-image">
+  <button class="btn btn-success" (click)="click()">Hide/Show</button>
+</div>
+
+<!--<div style="margin: 10px;text-align: center">-->
+<!--  <input [(ngModel)]="product.name" placeholder="enter your product">-->
+<!--</div>-->
 
 <table class="table table-dark">
   <thead>
@@ -15,11 +26,13 @@
   <tbody>
   <tr *ngFor="let product of products,let i =index">
     <th scope="row">{{i + 1}}</th>
-    <td>{{product.name}}</td>
+    <td>{{product.name| uppercase}}</td>
     <td>{{product.price}}</td>
     <ng-container *ngIf="showImage">
       <td><img src="{{product.image}}" alt="" width="{{widthImage}}"></td>
     </ng-container>
+    <td>
+      <button class="btn btn-danger" (click)="delete(i)">Delete</button></td>
   </tr>
   </tbody>
 </table>
